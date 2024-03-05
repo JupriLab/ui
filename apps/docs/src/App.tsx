@@ -2,13 +2,15 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import Button from "@open-react/base/Button";
-import Input from "@open-react/base/Input";
-import Test from "@open-react/base/Test";
-import Test2 from "@open-react/base/Test/Test2";
+import useDatePickerSingle from "@jupri-lab/base/useDatePickerSingle";
 
 function App() {
   const [count, setCount] = useState(0);
+  const { setActiveMonthCounter } = useDatePickerSingle();
+
+  const handleChangeActiveMonth = (value: number) => {
+    setActiveMonthCounter(value);
+  };
 
   return (
     <>
@@ -21,11 +23,14 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <Button />
-      <Input />
-      <Test />
-      <Test2 />
+
       <div className="card">
+        <input
+          type="number"
+          onChange={(e) =>
+            handleChangeActiveMonth(parseInt(e.currentTarget.value) || 0)
+          }
+        />
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
