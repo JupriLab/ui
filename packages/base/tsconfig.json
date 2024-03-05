@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES5",
     "skipLibCheck": true,
-    "module": "ESNext",
+    "module": "Node16",
     "moduleResolution": "Node16",
     "incremental": true,
     "isolatedModules": false,

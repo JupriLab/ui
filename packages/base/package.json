@@ -1,9 +1,10 @@
 {
-  "name": "@open-react/base",
+  "name": "@jupri-lab/base",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pre-build": "node ./pre-build.script.js"
   },
   "keywords": [],
   "author": "",
