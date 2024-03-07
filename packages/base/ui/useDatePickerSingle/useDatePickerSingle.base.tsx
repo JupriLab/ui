@@ -4,10 +4,39 @@ import { IUseDatePickerSingleProps, IUseDatePickerSingleReturn } from "./types";
 const currentDateObject = new Date();
 
 /**
- * @remarks A present from jupri's lab hook for creating a single date picker with support for
+ * A present from jupri's lab hook for creating a single date picker with support for
  * selectable dates, minimum and maximum date range, and disabled dates.
  * It provides state and functions to manage the active date and handle date selection.
  * @param props The hook configuration options.
+ * @remarks
+ * Example:
+ * ```
+ * const {
+ *   currentDate,
+ *   currentMonth,
+ *   currentYear,
+ *   activeDate,
+ *   activeMonth,
+ *   activeYear,
+ *   activeMonthIndex,
+ *   activeDateObject,
+ *   currentDateObject,
+ *   firstDayInMonth,
+ *   daysInMonth,
+ *   startDate,
+ *   endDate,
+ *   selectedDate,
+ *   isDateSelectable,
+ *   handleDateSelect,
+ *   handleChangePerMonth,
+ *   handleChangePerYear,
+ * } = useDatePickerSingle({
+ *   minDate: new Date(),
+ *   maxDate: new Date('2025-12-31'),
+ *   disabledDates: [new Date('2024-03-08')],
+ *   onDateSelected: (date) => console.log('Selected date:', date),
+ * });
+ * ```
  */
 const useDatePickerSingle = (
   props: IUseDatePickerSingleProps = {}
