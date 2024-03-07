@@ -1,3 +1,14 @@
+# **07/04/2024**
+
+Author: **Ebri**
+
+- Refactor useDatePickerSingle hook
+  <br>Adjust and add detailed documentation to the hook.
+
+<br/>
+
+---
+
 # **06/04/2024**
 
 Author: **Ebri**

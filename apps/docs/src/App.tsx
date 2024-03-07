@@ -6,10 +6,15 @@ import useDatePickerSingle from "@jupri-lab/base/useDatePickerSingle";
 
 function App() {
   const [count, setCount] = useState(0);
-  const { handleChangePerYear, activeDateObject } = useDatePickerSingle({});
+  const {
+    handleChangePerMonth,
+    activeDateObject,
+    daysInMonth,
+    firstDayInMonth,
+  } = useDatePickerSingle();
 
   const handleChangeActiveMonth = (value: number) => {
-    handleChangePerYear(value);
+    handleChangePerMonth(value);
   };
 
   return (
@@ -24,6 +29,22 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <h2>{activeDateObject.toString()}</h2>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(7, 1fr)",
+        }}
+      >
+        <div
+          style={{
+            gridColumnStart: firstDayInMonth,
+          }}
+        ></div>
+        {Array.from(Array(daysInMonth).keys()).map((index) => (
+          <div key={"calendar-item-" + index + 1}>{index + 1}</div>
+        ))}
+      </div>
 
       <div className="card">
         <input

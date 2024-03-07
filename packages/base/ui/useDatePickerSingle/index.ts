@@ -1,5 +1,5 @@
 import useDatePickerSingle from "./useDatePickerSingle.base";
-import { IDateObjectProps, IUseDatePickerSingleProps } from "./types";
+import { IUseDatePickerSingleProps, IUseDatePickerSingleReturn } from "./types";
 
-export type { IDateObjectProps, IUseDatePickerSingleProps };
+export type { IUseDatePickerSingleProps, IUseDatePickerSingleReturn };
 export default useDatePickerSingle;

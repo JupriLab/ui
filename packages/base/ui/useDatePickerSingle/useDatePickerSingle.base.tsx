@@ -1,65 +1,53 @@
 import { useState } from "react";
-import { IDateObjectProps, IUseDatePickerSingleProps } from "./types";
+import { IUseDatePickerSingleProps, IUseDatePickerSingleReturn } from "./types";
 
 const currentDateObject = new Date();
 
 /**
- * A present from jupri's lab hook for creating a single date picker with support for
+ * @remarks A present from jupri's lab hook for creating a single date picker with support for
  * selectable dates, minimum and maximum date range, and disabled dates.
  * It provides state and functions to manage the active date and handle date selection.
  * @param props The hook configuration options.
- * @returns An object containing state and functions for the date picker.
  */
-const useDatePickerSingle = (props: IUseDatePickerSingleProps = {}) => {
+const useDatePickerSingle = (
+  props: IUseDatePickerSingleProps = {}
+): IUseDatePickerSingleReturn => {
   const [activeMonthIndex, setActiveMonthIndex] = useState(0);
-  const [selectedDate, setSelectedDate] = useState<IDateObjectProps | null>(
-    null
-  );
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  const activeDateObject = {
-    year: new Date().getFullYear(),
-    month: new Date().getMonth() + activeMonthIndex,
-    day: 1,
-  };
-  const activeYear = activeDateObject.year;
-  const activeMonth = activeDateObject.month;
-  const activeDate = activeDateObject.day;
+  const activeDateObject = new Date(currentDateObject);
+  activeDateObject.setMonth(activeDateObject.getMonth() + activeMonthIndex);
+  activeDateObject.setDate(1);
+  const activeYear = activeDateObject.getFullYear();
+  const activeMonth = activeDateObject.getMonth();
+  const activeDate = activeDateObject.getDate();
 
+  const firstDayInMonth = activeDateObject.getDay();
   const daysInMonth = new Date(activeYear, activeMonth + 1, 0).getDate();
-  const startDate = {
-    year: activeYear,
-    month: activeMonth,
-    day: 1,
-  };
-  const endDate = {
-    year: activeYear,
-    month: activeMonth,
-    day: daysInMonth,
-  };
+  const startDate = new Date(activeYear, activeMonth, 1);
+  const endDate = new Date(activeYear, activeMonth, daysInMonth);
 
   /**
    * Checks if a date is selectable based on the minDate, maxDate, and disabledDates.
    * @param date The date to check.
    * @returns True if the date is selectable, false otherwise.
    */
-  const isDateSelectable = (date: IDateObjectProps) =>
-    (!props?.minDate ||
-      new Date(date.year, date.month, date.day) >= props?.minDate) &&
-    (!props?.maxDate ||
-      new Date(date.year, date.month, date.day) <= props?.maxDate) &&
+  const isDateSelectable = (date: Date) =>
+    (!props?.minDate || date >= props?.minDate) &&
+    (!props?.maxDate || date <= props?.maxDate) &&
     (!props?.disabledDates ||
       !props?.disabledDates.some(
         (disabledDate) =>
-          disabledDate.getFullYear() === date.year &&
-          disabledDate.getMonth() === date.month &&
-          disabledDate.getDate() === date.day
+          disabledDate.getFullYear() === date.getFullYear() &&
+          disabledDate.getMonth() === date.getMonth() &&
+          disabledDate.getDate() === date.getDate()
       ));
 
   /**
-   * Handles the click event on a date.
+   * Handles the event on a date.
    * @param date The date that was clicked.
    */
-  const handleDateSelect = (date: IDateObjectProps) => {
+  const handleDateSelect = (date: Date) => {
     if (isDateSelectable(date)) {
       setSelectedDate(date);
       if (props?.onDateSelected) {
@@ -94,6 +82,7 @@ const useDatePickerSingle = (props: IUseDatePickerSingleProps = {}) => {
     activeMonthIndex,
     activeDateObject,
     currentDateObject,
+    firstDayInMonth,
     daysInMonth,
     startDate,
     endDate,
