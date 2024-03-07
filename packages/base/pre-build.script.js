@@ -7,7 +7,7 @@ function scanPaths(dir) {
   components?.map((component) => {
     const componentStat = fs.statSync(`${dir}/${component}`);
     if (component === "index.ts") {
-      const componentDir = dir.split("./components/");
+      const componentDir = dir.split("./ui/");
       const componentName = componentDir[1].replace("/index.ts", "");
       fileList[`./${componentName}`] = `${dir}/${component}`;
     } else if (componentStat.isDirectory()) {
@@ -20,7 +20,7 @@ function scanPaths(dir) {
 const filePath = "package.json";
 
 // Path to components Dir
-const componentsDir = "./components";
+const componentsDir = "./ui";
 
 // Read the JSON file
 fs.readFile(filePath, "utf8", (err, data) => {

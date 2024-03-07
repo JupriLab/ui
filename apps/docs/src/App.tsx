@@ -2,13 +2,20 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import Button from "@open-react/base/Button";
-import Input from "@open-react/base/Input";
-import Test from "@open-react/base/Test";
-import Test2 from "@open-react/base/Test/Test2";
+import useDatePickerSingle from "@jupri-lab/base/useDatePickerSingle";
 
 function App() {
   const [count, setCount] = useState(0);
+  const {
+    handleChangePerMonth,
+    activeDateObject,
+    daysInMonth,
+    firstDayInMonth,
+  } = useDatePickerSingle();
+
+  const handleChangeActiveMonth = (value: number) => {
+    handleChangePerMonth(value);
+  };
 
   return (
     <>
@@ -21,11 +28,31 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <Button />
-      <Input />
-      <Test />
-      <Test2 />
+      <h2>{activeDateObject.toString()}</h2>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(7, 1fr)",
+        }}
+      >
+        <div
+          style={{
+            gridColumnStart: firstDayInMonth,
+          }}
+        ></div>
+        {Array.from(Array(daysInMonth).keys()).map((index) => (
+          <div key={"calendar-item-" + index + 1}>{index + 1}</div>
+        ))}
+      </div>
+
       <div className="card">
+        <input
+          type="number"
+          onChange={(e) =>
+            handleChangeActiveMonth(parseInt(e.currentTarget.value) || 0)
+          }
+        />
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
