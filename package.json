@@ -13,5 +13,8 @@
     "packages/base",
     "packages/core",
     "apps/docs"
-  ]
+  ],
+  "dependencies": {
+    "react-scripts": "^5.0.1"
+  }
 }
