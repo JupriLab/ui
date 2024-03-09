@@ -19,6 +19,7 @@
     "typescript": "^5.3.3"
   },
   "exports": {
-    "./useDatePickerSingle": "./src/useDatePickerSingle/index.ts"
+    "./useDatePickerSingle": "./src/useDatePickerSingle/index.ts",
+    "./useForm": "./src/useForm/index.ts"
   }
 }

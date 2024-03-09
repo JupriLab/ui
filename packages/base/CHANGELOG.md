@@ -1,4 +1,16 @@
-# **07/04/2024**
+# 0.2.0
+
+Date: **09/03/2024**
+
+Author: **Esa**
+
+- Initialized useForm hook with input binding logic.
+- Created an onSubmit handler that accepts a callback for extra handling by user.
+- Renamed CHANGELOGS.MD to CHANGELOG.md
+
+# 0.1.1
+
+Date: **07/03/2024**
 
 Author: **Ebri**
 
@@ -9,7 +21,9 @@ Author: **Ebri**
 
 ---
 
-# **06/04/2024**
+# 0.1.0
+
+Date: **06/03/2024**
 
 Author: **Ebri**
 
@@ -20,7 +34,9 @@ Author: **Ebri**
 
 ---
 
-# **05/04/2024**
+# 0.0.1
+
+Date: **05/03/2024**
 
 Author: **Ebri**
 
