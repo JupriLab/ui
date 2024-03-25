@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "rootDir": "./src",
+    "types": ["node"],
+    "lib": ["esnext"],
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
+  }
+}

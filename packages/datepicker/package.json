@@ -1,0 +1,25 @@
+{
+  "name": "@jupri-lab/datepicker",
+  "version": "0.1.0",
+  "description": "A headless ui for building datepicker with ease.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/cjs/index.d.ts",
+  "types": "dist/esm/index.d.ts",
+  "peerDependencies": {
+    "react": "^16.8.0 || ^18.0.0"
+  },
+  "scripts": {
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build": "npm run build:cjs && npm run build:esm"
+  },
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    },
+    "./useDatepickerSingle": "./src/hooks/useDatepickerSingle.hook.tsx"
+  }
+}

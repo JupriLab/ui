@@ -12,6 +12,7 @@
   "workspaces": [
     "packages/base",
     "packages/core",
+    "packages/datepicker",
     "apps/docs"
   ],
   "dependencies": {
