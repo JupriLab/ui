@@ -14,12 +14,5 @@
     "build:esm": "tsc -p tsconfig.esm.json",
     "build": "npm run build:cjs && npm run build:esm"
   },
-  "license": "MIT",
-  "exports": {
-    ".": {
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js"
-    },
-    "./useDatepickerSingle": "./src/hooks/useDatepickerSingle.hook.tsx"
-  }
+  "license": "MIT"
 }

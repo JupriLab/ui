@@ -4,6 +4,6 @@
     "module": "esnext",
     "outDir": "dist/esm"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["./**/*.ts", "./**/*.tsx"],
   "exclude": ["node_modules"]
 }

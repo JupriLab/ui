@@ -3,7 +3,7 @@ import type {
   IDate,
   IDatepickerRef,
   IUseDatePickerParams,
-} from "../types/datepickerSingle.type";
+} from "./useDatepickerSingle.type";
 
 /**
  * A hook to manage date-related operations and state.

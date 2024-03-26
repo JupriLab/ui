@@ -1,9 +1,9 @@
-import useDatepickerSingle from "./hooks/useDatepickerSingle.hook";
+import useDatepickerSingle from "./useDatepickerSingle";
 import type {
   IDate,
   IDatepickerRef,
   IUseDatePickerParams,
-} from "./types/datepickerSingle.type";
+} from "./useDatepickerSingle/useDatepickerSingle.type";
 
 export { useDatepickerSingle };
 export type { IDate, IDatepickerRef, IUseDatePickerParams };
