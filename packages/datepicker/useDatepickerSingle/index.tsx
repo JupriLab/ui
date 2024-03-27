@@ -60,8 +60,6 @@ const useDatepicker = ({
     monthIndex: number = dateInstance.getMonth() + 1
   ) => {
     const newDate = new Date(year, monthIndex, 0);
-    console.log({ lastDate: newDate, monthIndex });
-
     return newDate.getDate();
   };
 
@@ -72,7 +70,6 @@ const useDatepicker = ({
   const getDatesOfTheMonth = () => {
     const dates: IDate[] = [];
     const firstDayOfTheMonth = getFirstDayOfTheMonth();
-    const lastDayOfTheMonth = getLastDayOfTheMonth();
     const lastDateOfTheMonth = getLastDateOfTheMonth();
     const lastDateOfThePreviousMonth = getLastDateOfTheMonth(
       dateInstance.getFullYear(),
@@ -90,12 +87,15 @@ const useDatepicker = ({
         value: i,
         isCurrentMonth: true,
       });
-    const remainingDays = 6 - lastDayOfTheMonth;
-    for (let i = 1; i <= remainingDays; i++) {
-      dates.push({
-        value: i,
-        isCurrentMonth: false,
-      });
+
+    if (dates.length < 42) {
+      const remaining = 42 - dates.length;
+      for (let i = 1; i <= remaining; i++) {
+        dates.push({
+          value: i,
+          isCurrentMonth: false,
+        });
+      }
     }
     return dates;
   };

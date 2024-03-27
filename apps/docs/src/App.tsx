@@ -1,9 +1,29 @@
 import useDatepickerSingle from "@jupri-lab/datepicker/useDatepickerSingle";
 import { useState } from "react";
 
+const MONTHS = new Map([
+  [0, "Jan"],
+  [1, "Feb"],
+  [2, "Mar"],
+  [3, "Apr"],
+  [4, "May"],
+  [5, "Jun"],
+  [6, "Jul"],
+  [7, "Aug"],
+  [8, "Sep"],
+  [9, "Oct"],
+  [10, "Nov"],
+  [11, "Dec"],
+]);
+
 function App() {
   const [dateInstance, setDateInstance] = useState(new Date());
-  const { getDatesOfTheMonth } = useDatepickerSingle({
+  const {
+    getDatesOfTheMonth,
+    getNextMonthHandler,
+    getPreviousMonthHandler,
+    getMonth,
+  } = useDatepickerSingle({
     dateInstance,
     onDateInstanceChange: setDateInstance,
   });
@@ -16,25 +36,44 @@ function App() {
     >
       <div
         style={{
-          margin: "auto",
           maxWidth: 500,
+          marginInline: "auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
           width: "100%",
-          display: "grid",
-          gridTemplateColumns: "repeat(7, 1fr)",
-          gap: 24,
-          placeItems: "center",
         }}
       >
-        {getDatesOfTheMonth().map((date, i) => (
-          <p
+        <p>{MONTHS.get(getMonth())}</p>
+        <div
+          style={{
+            display: "flex",
+            marginInline: "auto",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <button onClick={getPreviousMonthHandler}>Prev</button>
+          <div
             style={{
-              opacity: date.isCurrentMonth ? 1 : 0.5,
+              display: "grid",
+              gridTemplateColumns: "repeat(7, 1fr)",
+              placeItems: "center",
+              width: "100%",
             }}
-            key={i}
           >
-            {date.value}
-          </p>
-        ))}
+            {getDatesOfTheMonth().map((date) => (
+              <p
+                style={{
+                  opacity: date.isCurrentMonth ? 1 : 0.5,
+                }}
+              >
+                {date.value}
+              </p>
+            ))}
+          </div>
+          <button onClick={getNextMonthHandler}>Next</button>
+        </div>
       </div>
     </div>
   );
